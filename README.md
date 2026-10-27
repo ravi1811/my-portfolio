@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Ravindra Shinde — Personal Portfolio
 
 A responsive React + Vite personal website based on the information in Ravindra Shinde's resume. The portfolio section currently uses clearly labelled placeholders so real projects, screenshots and links can be added later.
@@ -35,3 +36,7 @@ npm run preview
 - Add your project descriptions, screenshots and repository/live-demo links in the `projectPlaceholders` array in `src/main.jsx`.
 - If you prefer not to publish your phone number or email publicly, remove or change those details in the contact section.
 - The page imports Google Fonts from the internet; system fallback fonts will be used if they cannot load.
+=======
+# my-portfolio
+This is my portfolio for showcase
+>>>>>>> 1f2dc86465f47053a8f802d8efa75f6820c3e7c4
