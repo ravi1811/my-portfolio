@@ -60,8 +60,16 @@ const experience = [
   },
 ];
 
-const projectPlaceholders = [
-  { number: '01', type: 'REACT / NEXT.JS', title: 'Featured project coming soon', text: 'A space for a standout application, the problem it solves, and the impact it delivers.', icon: MonitorSmartphone },
+const projects = [
+  {
+    number: '01',
+    type: 'NEXT.JS / E-COMMERCE',
+    title: 'FreshMart — Online Grocery Store',
+    text: 'A modern online grocery storefront built to make browsing grocery categories and products simple and convenient.',
+    icon: MonitorSmartphone,
+    technologies: ['Next.js', 'React', 'TypeScript', 'Prisma', 'Neon PostgreSQL'],
+    liveUrl: 'https://main.d1nwqvqbe93554.amplifyapp.com/',
+  },
   { number: '02', type: 'UI ARCHITECTURE', title: 'Case study coming soon', text: 'Showcase reusable components, design systems, frontend architecture, or performance work.', icon: Layers3 },
   { number: '03', type: 'PALANTIR / AI', title: 'Technical deep dive coming soon', text: 'Add a project walkthrough covering integrations, analytics, AI-assisted workflows, or custom widgets.', icon: Sparkles },
 ];
@@ -119,7 +127,33 @@ function App() {
 
         <section className="section section-light" id="experience"><div className="section-wrap"><div className="section-heading heading-row"><div><span className="section-kicker">03 / EXPERIENCE</span><h2>Experience that<br /><span>delivers.</span></h2></div><p className="heading-intro">A career built around solving real business problems with dependable frontend engineering.</p></div><div className="timeline">{experience.map((job, index) => <article className="timeline-item" key={job.role}><div className="timeline-marker"><span>{String(index + 1).padStart(2, '0')}</span></div><div className="timeline-content"><div className="timeline-meta">{job.period}</div><h3>{job.role}</h3><div className="timeline-company">{job.company}</div><ul>{job.points.map(point => <li key={point}>{point}</li>)}</ul></div></article>)}</div></div></section>
 
-        <section className="section portfolio-section" id="portfolio"><div className="section-wrap"><div className="section-heading heading-row"><div><span className="section-kicker">04 / SELECTED WORK</span><h2>Work in progress.<br /><span>Impact in focus.</span></h2></div><p className="heading-intro">This space is ready for my portfolio. Detailed case studies and live project links will be added soon.</p></div><div className="portfolio-grid">{projectPlaceholders.map(project => { const Icon = project.icon; return <article className="project-card project-placeholder" key={project.number}><div className="project-card-top"><span className="project-number">{project.number}</span><span className="project-icon"><Icon size={22} /></span></div><span className="project-type">{project.type}</span><h3>{project.title}</h3><p>{project.text}</p><div className="project-footer"><span className="coming-soon"><span /> DETAILS COMING SOON</span><ArrowUpRight size={18} /></div></article>; })}</div><div className="portfolio-note"><Sparkles size={18} /><span>Portfolio cards are placeholders for now — replace them with your projects, screenshots, GitHub links and case studies whenever you’re ready.</span></div></div></section>
+        <section className="section portfolio-section" id="portfolio">
+          <div className="section-wrap">
+            <div className="section-heading heading-row">
+              <div><span className="section-kicker">04 / SELECTED WORK</span><h2>Selected projects.<br /><span>Built for impact.</span></h2></div>
+              <p className="heading-intro">A selection of hands-on work, including a live online grocery store built with a modern web stack.</p>
+            </div>
+            <div className="portfolio-grid">
+              {projects.map(project => {
+                const Icon = project.icon;
+                const isLive = Boolean(project.liveUrl);
+                return (
+                  <article className={isLive ? 'project-card' : 'project-card project-placeholder'} key={project.number}>
+                    <div className="project-card-top"><span className="project-number">{project.number}</span><span className="project-icon"><Icon size={22} /></span></div>
+                    <span className="project-type">{project.type}</span>
+                    <h3>{project.title}</h3>
+                    <p>{project.text}</p>
+                    {project.technologies && <div className="skill-tags project-tech">{project.technologies.map(tech => <span key={tech}>{tech}</span>)}</div>}
+                    <div className="project-footer">
+                      {isLive ? <><a href={project.liveUrl} target="_blank" rel="noreferrer" aria-label={`Open live demo for ${project.title}`}>VIEW LIVE DEMO</a><a href={project.liveUrl} target="_blank" rel="noreferrer" aria-label={`Open ${project.title}`}><ArrowUpRight size={18} /></a></> : <><span className="coming-soon"><span /> DETAILS COMING SOON</span><ArrowUpRight size={18} /></>}
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+            <div className="portfolio-note"><Sparkles size={18} /><span>FreshMart is live on AWS Amplify. More project case studies can be added here as they are ready.</span></div>
+          </div>
+        </section>
 
         <section className="section section-light education-section"><div className="section-wrap education-grid"><div><span className="section-kicker">A LITTLE MORE</span><h2>Always learning.<br /><span>Always improving.</span></h2></div><div className="education-list"><div><span className="edu-icon"><Globe2 size={18} /></span><div><h3>Bachelor of Computer Applications (BCA)</h3><p>Sikkim Manipal University</p></div></div><div><span className="edu-icon"><BriefcaseBusiness size={18} /></span><div><h3>Diploma in Web Design</h3><p>Alison</p></div></div><div><span className="edu-icon"><Code2 size={18} /></span><div><h3>Certification in HTML5</h3><p>Alison</p></div></div></div></div></section>
 
